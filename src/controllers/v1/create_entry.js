@@ -14,6 +14,16 @@ const createEntry = async (key) => {
 
     const docsCount = await models.cache.count({});
 
+
+    /**
+     * check for cache max limit
+     *    if cache max limit:
+     *        call method to delete an entry with the lowest recently_used, 
+     *        ordered by created (oldest first).
+     *        basically if there are, say, 3 entries with an recently_used 
+     *        of 0, the "tie-breaker" becomes created_at. The oldest 
+     *        of the 3 entries should be deleted.
+     */
     if (docsCount === appConfig.cache_limit) {
         await dropLeastRecentlyUsed();
     }
