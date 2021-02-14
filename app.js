@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan')('dev');
 const appConfig = require('./src/config');
+const routes = require('./src/routes');
 
 // middlewares
 app.use(cors());
@@ -19,6 +20,8 @@ app.get('/', (req, res) => {
         version: '1.0'
     });
 });
+
+app.use('/v1', routes);
 
 
 module.exports = app;
