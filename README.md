@@ -14,6 +14,8 @@ $ git clone https://github.com/MaestroJolly/cache-api.git
 
 - Run `cd cache-api` to change directory into the directory of the project.
 
+- Rename the `.env.example` to `.env` then to set your environment variables.
+
 - Run this command to install the dependencies
 
 ```
