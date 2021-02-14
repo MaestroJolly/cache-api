@@ -3,6 +3,7 @@
 const Joi = require('joi');
 const models = require('../../models');
 const logger = require('../../utils/logger');
+const createEntry = require('./create_entry');
 
 const schema = Joi.object({
     key: Joi.string().alphanum().required()
@@ -26,11 +27,7 @@ const getCache = async (data) => {
             logger.info('Cache miss');
 
             // create random string
-            findCache = await models.cache.create({
-                key: value.key,
-                value: require('crypto').randomBytes(24).toString('hex')
-            });
-
+            findCache = await createEntry(value.key);
         }else{
             // log cache miss to the console.
             logger.info('Cache hit');

@@ -10,7 +10,7 @@ const schemaConfig = {
         type: Date, 
         default: (Date.now() + parseInt(appConfig.ttl_time))
      },
-    request_time: { type: Number, default: 0 },
+     recently_used: { type: Number, default: 0 },
     ts: { type: Date, default: Date.now() }
 };
 const schemaObject = new Schema(schemaConfig);
